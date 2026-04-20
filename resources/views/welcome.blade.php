@@ -38,49 +38,41 @@
         />
         <link rel="stylesheet" href="style.css" />
     </head>
-    <body class="bg-[#FDFDFC] text-[#1b1b18] flex p-6 lg:p-8 items-center lg:justify-center min-h-screen flex-col">
-    <div></div>
-        <header class="fixed top-5 left-0 right-10">
+    <body class="bg-[#FDFDFC] text-[#1b1b18] flex p-6 lg:p-8 items-center lg:justify-center min-h-screen flex-col my-0 pb-0">
+        <header class="fixed-top px-4 mt-0 pt-0"" style="background-color: rgba(14, 17, 89, 0.9); top:0; padding-top: 20px; padding-bottom: 20px;">
             @if (Route::has('login'))
+                <div class="container-fluid">
+                <div class="row align-items-center">
 
-                <nav class="flex items-center justify-end gap-4">
-                    @auth
-                        <a
-                            href="{{ url('/dashboard') }}"
-                            class="inline-block px-5 py-1.5 text-dark border-[#19140035] hover:border-[#1915014a] border text-[#1b1b18] dark:border-[#3E3E3A] dark:hover:border-[#62605b] rounded-sm text-sm leading-normal"
-                        >
-                            Dashboard
-                        </a>
-                    @else
-                        <a
-                            href="{{ route('login') }}"
-                            class="inline-block px-5 py-1.5 text-dark text-[#1b1b18] border border-transparent hover:border-[#19140035] dark:hover:border-[#3E3E3A] rounded-sm text-sm leading-normal"
-                        >
-                            Log in
-                        </a>
-
-                        @if (Route::has('register'))
-                            <a
-                                href="{{ route('register') }}"
-                                class="inline-block px-5 py-1.5 text-dark border-[#19140035] hover:border-[#1915014a] border text-[#1b1b18] dark:border-[#3E3E3A] dark:hover:border-[#62605b] rounded-sm text-sm leading-normal">
-                                Register
-                            </a>
-                        @endif
-                    @endauth
-                    <div class="container">
-                        <a class="navbar-brand fw-bold d-flex align-items-center" href="#">
-                        <img src="images/logo.png" alt="Moving Medicine Logo" class="navbar-logo me-2">
-                        Pharmacare Hub
-                        </a>
-                        <button
-                        class="navbar-toggler"
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#navMenu"
-                        >
-                        
+                    <!-- Left: Logo + Brand -->
+                    <div class="col-auto d-flex align-items-center fw-bold">
+                        <img src="images/logo.png" alt="Moving Medicine Logo" style="width: 50px; height: auto;">
+                        <p style="color:white; padding-top: 11px; padding-left: 10px; font-size: 25px; margin: 0;">Pharmacare</p>
                     </div>
-                </nav>
+
+                    <!-- Right: Nav links + Auth buttons -->
+                    <div class="col d-flex align-items-center justify-content-end gap-2">
+
+                        <a href="/services" class="btn btn-sm text-white ">Services</a>
+                        <a href="/contact" class="btn btn-sm text-white ">Contact</a>
+                        <a href="/shop" class="btn btn-sm btn-outline-light bg-light" style="color: rgba(14, 17, 89, 0.9);">Shop</a>
+
+                        @auth
+                            <a href="{{ url('/dashboard') }}" class="btn btn-sm btn-outline-light">Dashboard</a>
+                            <a href="/cart">
+                                <img src="images/shopping-cart.png" alt="Logo" style="width: 50px; height: auto;">
+                            </a>
+                        @else
+                            <a href="{{ route('login') }}" class="btn btn-sm btn-link text-white text-decoration-none">Log in</a>
+                            @if (Route::has('register'))
+                                <a href="{{ route('register') }}" class="btn btn-sm text-white btn-outline-light">Register</a>
+                            @endif
+                        @endauth
+
+                    </div>
+
+                </div>
+            </div>
             @endif
         </header>
         <div>
