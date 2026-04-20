@@ -1,0 +1,17 @@
+contains the master layout templates for your application. These are the "skeleton" files that define the common structure shared across multiple pages.
+
+resources/views/layouts/
+├── app.blade.php      ← Main layout for authenticated users
+├── guest.blade.php    ← Layout for non-authenticated (login, register)
+└── admin.blade.php    ← Optional admin layout
+
+Layouts provide the common structure that repeats across multiple pages, so you don't have to rewrite the same HTML over and over.
+
+layouts/ = The "frame" or "skeleton" (header, footer, navigation)
+auth/ = Specific page content that fills the frame
+
+resources/views/
+├── auth/                 ← Authentication pages
+├── layouts/              ← skeleton templates
+├── profile/              ← Pages for viewing/editing user account details (authenticated users only)
+├── components/           ← Small, reusable UI pieces that can be used anywhere
