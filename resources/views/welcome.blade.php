@@ -37,9 +37,12 @@
         href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
         />
         <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     </head>
-    <body class="bg-[#FDFDFC] text-[#1b1b18] flex p-6 lg:p-8 items-center lg:justify-center min-h-screen flex-col my-0 pb-0">
-        <header class="fixed-top px-4 mt-0 pt-0"" style="background-color: rgba(14, 17, 89, 0.9); top:0; padding-top: 20px; padding-bottom: 20px;">
+    <body class="bg-[#FDFDFC] text-[#1b1b18] min-h-screen" style="margin:0; padding:0;">
+        <header class="fixed-top px-4 mt-0 pt-0"" style="background-color: rgba(14, 17, 89, 0.9); top:0; padding-top: 20px; padding-bottom: 20px; margin-bottom: 0px;">
             @if (Route::has('login'))
                 <div class="container-fluid">
                 <div class="row align-items-center">
@@ -51,7 +54,7 @@
                     </div>
 
                     <!-- Right: Nav links + Auth buttons -->
-                    <div class="col d-flex align-items-center justify-content-end gap-2">
+                    <div class="col d-flex align-items-center justify-content-end gap-2 mt-2">
 
                         <a href="/services" class="btn btn-sm text-white ">Services</a>
                         <a href="/contact" class="btn btn-sm text-white ">Contact</a>
@@ -75,9 +78,119 @@
             </div>
             @endif
         </header>
-        <div>
-            
-        </div>  
+        <div class="container-fluid" style="margin-top: 68px; padding: 0; overflow: hidden;">
+            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+                </ol>
+
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <!-- Image wrapper -->
+                        <div style="position: relative; width: 100%; height: 620px; overflow: hidden;">
+                            <img src="images/carousel_1.jpg" alt="Los Angeles" 
+                                style="width:100%; height: 100%; object-fit: cover; filter: blur(6px); transform: scale(1.05);">
+                            <!-- White tint overlay -->
+                            <div style="position: absolute; inset: 0; background: rgba(255,255,255,0.45);"></div>
+                        </div>
+
+                        <!-- Text overlay -->
+                        <div style="
+                            position: absolute;
+                            top: 50%; left: 50%;
+                            transform: translate(-50%, -50%);
+                            text-align: center;
+                            color: rgba(14, 17, 89, 0.9);
+                            z-index: 10;
+                            width: 80%;
+                        ">
+                            <h2 style="font-size: 50px; font-weight: 700; margin-bottom: 1rem;">
+                                Healthy Tablets and Medicine
+                            </h2>
+                            <p style="font-size: 20px; margin-bottom: 1.5rem; color: #333;">
+                                Find the best medicines and healthcare products near you
+                            </p>
+                            <a href="/shop" class="btn btn-primary btn-lg" style="margin-right: 10px;">Shop Now</a>
+                            <a href="/services" class="btn btn-outline-primary btn-lg">Our Services</a>
+                        </div>
+                    </div>
+
+                <div class="item">
+                    <!-- Image wrapper -->
+                        <div style="position: relative; width: 100%; height: 620px; overflow: hidden;">
+                            <img src="images/carousel_2.jpg" alt="Los Angeles" 
+                                style="width:100%; height: 100%; object-fit: cover; filter: blur(6px); transform: scale(1.05);">
+                            <!-- White tint overlay -->
+                            <div style="position: absolute; inset: 0; background: rgba(255,255,255,0.45);"></div>
+                        </div>
+                    <!-- Overlay content -->
+                    <div style="
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        text-align: center;
+                        color:  rgba(14, 17, 89, 0.9);
+                        z-index: 10;
+                        width: 80%;
+                    ">
+                        <h2 style="font-size: 50px; font-weight: 700; margin-bottom: 1rem;">
+                            Fast & Reliable Delivery
+                        </h2>
+                        <p style="font-size: 20px; margin-bottom: 1.5rem; color:  #333;">
+                            Get your medicines delivered safely to your doorstep
+                        </p>
+                        <a href="/shop" class="btn btn-light btn-lg" style="margin-right: 10px;">Shop Now</a>
+                        <a href="/services" class="btn btn-outline-light btn-lg">Our Services</a>
+                    </div>
+                </div>
+                    
+                <div class="item">
+                    <!-- Image wrapper -->
+                        <div style="position: relative; width: 100%; height: 620px; overflow: hidden;">
+                            <img src="images/carousel_3.jpg" alt="Los Angeles" 
+                                style="width:100%; height: 100%; object-fit: cover; filter: blur(6px); transform: scale(1.05);">
+                            <!-- White tint overlay -->
+                            <div style="position: absolute; inset: 0; background: rgba(255,255,255,0.45);"></div>
+                        </div>
+                    <!-- Overlay content -->
+                    <div style="
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        text-align: center;
+                        color:  rgba(14, 17, 89, 0.9);
+                        z-index: 10;
+                        width: 80%;
+                    ">
+                        <h2 style="font-size: 50px; font-weight: 700; margin-bottom: 1rem;">
+                            Your Health, Our Priority
+                        </h2>
+                        <p style="font-size: 20px; margin-bottom: 1.5rem; color:  #333;">
+                            Expert healthcare services and prescription management
+                        </p>
+                        <a href="/log_prescription" class="btn btn-light btn-lg" style="margin-right: 10px;">Log Prescription</a>
+                        <a href="/find_pharmacy" class="btn btn-outline-light btn-lg">Find Pharmacy</a>
+                    </div>
+                </div>
+                </div>
+
+                <!-- Left and right controls -->
+                <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div> 
         @if (Route::has('login'))
             <div class="h-14.5 hidden lg:block"></div>
         @endif
