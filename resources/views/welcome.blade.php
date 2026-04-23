@@ -45,7 +45,7 @@
         <header class="fixed-top px-4 mt-0 pt-0"" style="background-color: rgba(14, 17, 89, 0.9); top:0; padding-top: 20px; padding-bottom: 20px; margin-bottom: 0px;">
             @if (Route::has('login'))
                 <div class="container-fluid">
-                <div class="row align-items-center">
+                <div class="row align-items-center justify-content-between">
 
                     <!-- Left: Logo + Brand -->
                     <div class="col-auto d-flex align-items-center fw-bold">
@@ -56,19 +56,19 @@
                     <!-- Right: Nav links + Auth buttons -->
                     <div class="col d-flex align-items-center justify-content-end gap-2 mt-2">
 
-                        <a href="/services" class="btn btn-sm text-white ">Services</a>
-                        <a href="/contact" class="btn btn-sm text-white ">Contact</a>
-                        <a href="/shop" class="btn btn-sm btn-outline-light bg-light" style="color: rgba(14, 17, 89, 0.9);">Shop</a>
+                        <a href="/services" class="btn btn-sm text-white " style="font-size: 16px; margin-top: 7px;">Services</a>
+                        <a href="/contact" class="btn btn-sm text-white " style="font-size: 16px; margin-top: 7px;">Contact</a>
+                        <a href="/shop" class="btn btn-sm" style="color: rgba(255, 255, 255, 0.9); background-color:rgba(74, 203, 184, 0.9); font-size: 16px; margin-top: 7px;">Shop</a>
 
                         @auth
-                            <a href="{{ url('/dashboard') }}" class="btn btn-sm btn-outline-light">Dashboard</a>
+                            <a href="{{ url('/dashboard') }}" class="btn btn-sm btn-outline-light" style="font-size: 16px; margin-top: 7px;">Dashboard</a>
                             <a href="/cart">
-                                <img src="images/shopping-cart.png" alt="Logo" style="width: 50px; height: auto;">
+                                <img src="images/shopping-cart.png" alt="Shopping Cart" style="width: 50px; height: auto;">
                             </a>
                         @else
-                            <a href="{{ route('login') }}" class="btn btn-sm btn-link text-white text-decoration-none">Log in</a>
+                            <a href="{{ route('login') }}" class="btn btn-sm btn-link text-white text-decoration-none" style="font-size: 16px; margin-top: 7px;">Log in</a>
                             @if (Route::has('register'))
-                                <a href="{{ route('register') }}" class="btn btn-sm text-white btn-outline-light">Register</a>
+                                <a href="{{ route('register') }}" class="btn btn-sm text-white btn-outline-light" style="font-size: 16px; margin-top: 7px;">Register</a>
                             @endif
                         @endauth
 
@@ -114,70 +114,40 @@
                             <p style="font-size: 20px; margin-bottom: 1.5rem; color: #333;">
                                 Find the best medicines and healthcare products near you
                             </p>
-                            <a href="/shop" class="btn btn-primary btn-lg" style="margin-right: 10px;">Shop Now</a>
-                            <a href="/services" class="btn btn-outline-primary btn-lg">Our Services</a>
+                            <a href="/shop" class="btn btn-primary btn-lg" style="margin-right: 10px; background-color: rgba(74, 203, 184, 0.9); border-color:rgba(74, 203, 184, 0.9); color: white;">Shop Now</a>
+                            <a href="/services" class="btn btn-lg bg-white " style="color: rgba(14, 17, 89, 0.9);">Our Services</a>
                         </div>
                     </div>
-
-                <div class="item">
-                    <!-- Image wrapper -->
-                        <div style="position: relative; width: 100%; height: 620px; overflow: hidden;">
-                            <img src="images/carousel_2.jpg" alt="Los Angeles" 
-                                style="width:100%; height: 100%; object-fit: cover; filter: blur(6px); transform: scale(1.05);">
-                            <!-- White tint overlay -->
-                            <div style="position: absolute; inset: 0; background: rgba(255,255,255,0.45);"></div>
-                        </div>
-                    <!-- Overlay content -->
-                    <div style="
-                        position: absolute;
-                        top: 50%;
-                        left: 50%;
-                        transform: translate(-50%, -50%);
-                        text-align: center;
-                        color:  rgba(14, 17, 89, 0.9);
-                        z-index: 10;
-                        width: 80%;
-                    ">
-                        <h2 style="font-size: 50px; font-weight: 700; margin-bottom: 1rem;">
-                            Fast & Reliable Delivery
-                        </h2>
-                        <p style="font-size: 20px; margin-bottom: 1.5rem; color:  #333;">
-                            Get your medicines delivered safely to your doorstep
-                        </p>
-                        <a href="/shop" class="btn btn-light btn-lg" style="margin-right: 10px;">Shop Now</a>
-                        <a href="/services" class="btn btn-outline-light btn-lg">Our Services</a>
-                    </div>
-                </div>
                     
-                <div class="item">
-                    <!-- Image wrapper -->
-                        <div style="position: relative; width: 100%; height: 620px; overflow: hidden;">
-                            <img src="images/carousel_3.jpg" alt="Los Angeles" 
-                                style="width:100%; height: 100%; object-fit: cover; filter: blur(6px); transform: scale(1.05);">
-                            <!-- White tint overlay -->
-                            <div style="position: absolute; inset: 0; background: rgba(255,255,255,0.45);"></div>
+                    <div class="item">
+                        <!-- Image wrapper -->
+                            <div style="position: relative; width: 100%; height: 620px; overflow: hidden;">
+                                <img src="images/carousel_3.jpg" alt="Los Angeles" 
+                                    style="width:100%; height: 100%; object-fit: cover; filter: blur(6px); transform: scale(1.05);">
+                                <!-- White tint overlay -->
+                                <div style="position: absolute; inset: 0; background: rgba(255,255,255,0.45);"></div>
+                            </div>
+                        <!-- Overlay content -->
+                        <div style="
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                            text-align: center;
+                            color:  rgba(14, 17, 89, 0.9);
+                            z-index: 10;
+                            width: 80%;
+                        ">
+                            <h2 style="font-size: 50px; font-weight: 700; margin-bottom: 1rem;">
+                                Your Health, Our Priority
+                            </h2>
+                            <p style="font-size: 20px; margin-bottom: 1.5rem; color:  #333;">
+                                Expert healthcare services and prescription management
+                            </p>
+                            <a href="/log_prescription" class="btn btn-light btn-lg" style="margin-right: 10px; background-color: rgba(74, 203, 184, 0.9); border-color: rgba(74, 203, 184, 0.9); color: white;">Log Prescription</a>
+                            <a href="/find_pharmacy" class="btn btn-outline-light btn-lg bg-white" style="color: rgba(14, 17, 89, 0.9);">Find Pharmacy</a>
                         </div>
-                    <!-- Overlay content -->
-                    <div style="
-                        position: absolute;
-                        top: 50%;
-                        left: 50%;
-                        transform: translate(-50%, -50%);
-                        text-align: center;
-                        color:  rgba(14, 17, 89, 0.9);
-                        z-index: 10;
-                        width: 80%;
-                    ">
-                        <h2 style="font-size: 50px; font-weight: 700; margin-bottom: 1rem;">
-                            Your Health, Our Priority
-                        </h2>
-                        <p style="font-size: 20px; margin-bottom: 1.5rem; color:  #333;">
-                            Expert healthcare services and prescription management
-                        </p>
-                        <a href="/log_prescription" class="btn btn-light btn-lg" style="margin-right: 10px;">Log Prescription</a>
-                        <a href="/find_pharmacy" class="btn btn-outline-light btn-lg">Find Pharmacy</a>
                     </div>
-                </div>
                 </div>
 
                 <!-- Left and right controls -->
@@ -194,5 +164,7 @@
         @if (Route::has('login'))
             <div class="h-14.5 hidden lg:block"></div>
         @endif
+
+        
     </body>
 </html>
