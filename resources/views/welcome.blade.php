@@ -165,6 +165,209 @@
             <div class="h-14.5 hidden lg:block"></div>
         @endif
 
-        
+        <!-- Search Section -->
+        <section class="py-4 bg-white">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 mx-auto">
+                        <form action="search_results.php" method="GET" style="
+                            display: flex;
+                            border: 1.5px solid #4ACBB8;
+                            border-radius: 10px;
+                            overflow: hidden;
+                            height: 52px;
+                        ">
+                            <!-- Category Dropdown -->
+                            <select name="category" style="
+                                border: none;
+                                border-right: 1.5px solid #4ACBB8;
+                                background: #f8f9fa;
+                                color: #333;
+                                font-size: 14px;
+                                padding: 0 14px;
+                                min-width: 150px;
+                                outline: none;
+                                cursor: pointer;
+                            ">
+                                <option value="All Category" selected>All Category</option>
+                                <option value="Medicine">Medicine</option>
+                                <option value="Wellness">Wellness</option>
+                                <option value="Diagnostics">Diagnostics</option>
+                                <option value="Supplements">Supplements</option>
+                            </select>
+
+                            <!-- Search Input -->
+                            <input
+                                type="text"
+                                name="query"
+                                placeholder="Search for medicine, device, or supplement..."
+                                style="
+                                    flex: 1;
+                                    border: none;
+                                    background: white;
+                                    font-size: 14px;
+                                    padding: 0 16px;
+                                    outline: none;
+                                    color: #333;
+                                "
+                            />
+
+                            <!-- Search Button -->
+                            <button type="submit" style="
+                                border: none;
+                                background: #4ACBB8;
+                                color: white;
+                                font-size: 14px;
+                                font-weight: 600;
+                                padding: 0 24px;
+                                cursor: pointer;
+                                display: flex;
+                                align-items: center;
+                                gap: 8px;
+                                white-space: nowrap;
+                                transition: background 0.15s;
+                            " onmouseover="this.style.background='#3ab5a3'" onmouseout="this.style.background='#4ACBB8'">
+                                <i class="bi bi-search"></i> Find Medicine
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Map & Nearest Pharmacy Section (Moved Down) -->
+        <section class="container mt-5 px-4">
+        <div class="row">
+            <div class="col-lg-8 mb-4 mb-lg-0">
+            <div
+                id="pharmacyMap"
+                style="
+                height: 400px;
+                border-radius: 15px;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.07);
+                "
+            ></div>
+            </div>
+            <div class="col-lg-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                <h5 class="card-title mb-3" style="font-size: 24px;">
+                    Nearby Pharmacies with "Paracetamol"
+                </h5>
+                <ul class="list-group list-group-flush">
+                    <li
+                    class="list-group-item d-flex justify-content-between align-items-center"
+                    >
+                    <div>
+                        <strong>HealthFirst Pharmacy</strong><br />
+                        <small>123 Main St. (0.5 km)</small>
+                    </div>
+                    <span class="badge bg-success rounded-pill">12 in stock</span>
+                    </li>
+                    <li
+                    class="list-group-item d-flex justify-content-between align-items-center"
+                    >
+                    <div>
+                        <strong>CityMed Drugstore</strong><br />
+                        <small>456 Oak Ave. (1.2 km)</small>
+                    </div>
+                    <span class="badge bg-warning rounded-pill">5 in stock</span>
+                    </li>
+                    <li
+                    class="list-group-item d-flex justify-content-between align-items-center"
+                    >
+                    <div>
+                        <strong>WellCare Pharmacy</strong><br />
+                        <small>789 Pine Rd. (2.0 km)</small>
+                    </div>
+                    <span class="badge bg-danger rounded-pill">2 in stock</span>
+                    </li>
+                </ul>
+                </div>
+            </div>
+            </div>
+        </div>
+        </section>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    <script>
+        // Real pharmacies in Panabo City (sample data)
+        const pharmacies = [
+            { name: "Mercury Drug (Panabo NHwy)", lat: 7.3100, lng: 125.6820, stock: 10 },
+            { name: "Cris Lou Pharmacy (Main)", lat: 7.3055, lng: 125.6855, stock: 3 },
+            { name: "DDN Panabo City 2 (Generika)", lat: 7.3070, lng: 125.6830, stock: 0 },
+            { name: "HB1 Pharmacy (Santo Niño)", lat: 7.3090, lng: 125.6860, stock: 6 },
+        ];
+
+        const fallbackLat = 7.30806, fallbackLng = 125.68417;
+
+        // Initialize map
+        let map = L.map("pharmacyMap").setView([fallbackLat, fallbackLng], 14);
+        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+            maxZoom: 19,
+            attribution: "© OpenStreetMap",
+        }).addTo(map);
+
+        // Add user marker
+        function addUserMarker(lat, lng) {
+            L.marker([lat, lng], {
+            icon: L.icon({
+                iconUrl: "https://cdn-icons-png.flaticon.com/512/149/149060.png",
+                iconSize: [35, 35],
+                iconAnchor: [17, 34],
+            }),
+            })
+            .addTo(map)
+            .bindPopup("📍 You are here")
+            .openPopup();
+            map.setView([lat, lng], 14);
+        }
+
+        // Add pharmacy circle markers
+        function showPharmacies(pharmacies) {
+            pharmacies.forEach((ph) => {
+            let color;
+            if (ph.stock > 7) color = "green"; // plenty
+            else if (ph.stock > 0) color = "yellow"; // low stock
+            else color = "red"; // no stock
+
+            // Create circle marker
+            const circle = L.circleMarker([ph.lat, ph.lng], {
+                radius: 10,
+                fillColor: color,
+                color: "#333",
+                weight: 1,
+                opacity: 1,
+                fillOpacity: 0.9,
+            }).addTo(map);
+
+            circle.bindPopup(
+                `<b>${ph.name}</b><br>Stock: ${
+                ph.stock > 0 ? ph.stock + " available" : "Out of stock"
+                }`
+            );
+            });
+        }
+
+        // Get user location
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+            (pos) => {
+                const lat = pos.coords.latitude,
+                lng = pos.coords.longitude;
+                addUserMarker(lat, lng);
+                showPharmacies(pharmacies);
+            },
+            () => {
+                addUserMarker(fallbackLat, fallbackLng);
+                showPharmacies(pharmacies);
+            }
+            );
+        } else {
+            addUserMarker(fallbackLat, fallbackLng);
+            showPharmacies(pharmacies);
+        }
+    </script>
     </body>
 </html>
