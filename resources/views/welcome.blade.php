@@ -165,75 +165,75 @@
             <div class="h-14.5 hidden lg:block"></div>
         @endif
 
-        <!-- Search Section -->
-        <section class="py-4 bg-white">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-10 mx-auto">
-                        <form action="search_results.php" method="GET" style="
-                            display: flex;
-                            border: 1.5px solid #4ACBB8;
-                            border-radius: 10px;
-                            overflow: hidden;
-                            height: 52px;
+    <!-- Search Section -->
+    <section class="py-4 bg-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <form action="search_results.php" method="GET" style="
+                        display: flex;
+                        border: 1.5px solid #4ACBB8;
+                        border-radius: 10px;
+                        overflow: hidden;
+                        height: 52px;
+                    ">
+                        <!-- Category Dropdown -->
+                        <select name="category" style="
+                            border: none;
+                            border-right: 1.5px solid #4ACBB8;
+                            background: #f8f9fa;
+                            color: #333;
+                            font-size: 14px;
+                            padding: 0 14px;
+                            min-width: 150px;
+                            outline: none;
+                            cursor: pointer;
                         ">
-                            <!-- Category Dropdown -->
-                            <select name="category" style="
+                            <option value="All Category" selected>All Category</option>
+                            <option value="Medicine">Medicine</option>
+                            <option value="Wellness">Wellness</option>
+                            <option value="Diagnostics">Diagnostics</option>
+                            <option value="Supplements">Supplements</option>
+                        </select>
+
+                        <!-- Search Input -->
+                        <input
+                            type="text"
+                            name="query"
+                            placeholder="Search for medicine, device, or supplement..."
+                            style="
+                                flex: 1;
                                 border: none;
-                                border-right: 1.5px solid #4ACBB8;
-                                background: #f8f9fa;
-                                color: #333;
+                                background: white;
                                 font-size: 14px;
-                                padding: 0 14px;
-                                min-width: 150px;
+                                padding: 0 16px;
                                 outline: none;
-                                cursor: pointer;
-                            ">
-                                <option value="All Category" selected>All Category</option>
-                                <option value="Medicine">Medicine</option>
-                                <option value="Wellness">Wellness</option>
-                                <option value="Diagnostics">Diagnostics</option>
-                                <option value="Supplements">Supplements</option>
-                            </select>
+                                color: #333;
+                            "
+                        />
 
-                            <!-- Search Input -->
-                            <input
-                                type="text"
-                                name="query"
-                                placeholder="Search for medicine, device, or supplement..."
-                                style="
-                                    flex: 1;
-                                    border: none;
-                                    background: white;
-                                    font-size: 14px;
-                                    padding: 0 16px;
-                                    outline: none;
-                                    color: #333;
-                                "
-                            />
-
-                            <!-- Search Button -->
-                            <button type="submit" style="
-                                border: none;
-                                background: #4ACBB8;
-                                color: white;
-                                font-size: 14px;
-                                font-weight: 600;
-                                padding: 0 24px;
-                                cursor: pointer;
-                                display: flex;
-                                align-items: center;
-                                gap: 8px;
-                                white-space: nowrap;
-                                transition: background 0.15s;
-                            " onmouseover="this.style.background='#3ab5a3'" onmouseout="this.style.background='#4ACBB8'">
-                                <i class="bi bi-search"></i> Find Medicine
-                            </button>
-                        </form>
-                    </div>
+                        <!-- Search Button -->
+                        <button type="submit" style="
+                            border: none;
+                            background: #4ACBB8;
+                            color: white;
+                            font-size: 14px;
+                            font-weight: 600;
+                            padding: 0 24px;
+                            cursor: pointer;
+                            display: flex;
+                            align-items: center;
+                            gap: 8px;
+                            white-space: nowrap;
+                            transition: background 0.15s;
+                        " onmouseover="this.style.background='#3ab5a3'" onmouseout="this.style.background='#4ACBB8'">
+                            <i class="bi bi-search"></i> Find Medicine
+                        </button>
+                    </form>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
         <!-- Map & Nearest Pharmacy Section (Moved Down) -->
         <section class="container mt-5 px-4">
@@ -369,5 +369,129 @@
             showPharmacies(pharmacies);
         }
     </script>
+        <section class="services-section py-5">
+            <div class="container">
+                <div class="services-header text-center mb-5">
+                <h2 class="services-title">Our Services</h2>
+                </div>
+                
+                <div class="row g-4">
+                <?php
+                    $services = [
+                    ['icon' => 'bi-capsule', 'title' => 'Medicine', 'desc' => 'Browse and order trusted medicines for your needs.'],
+                    ['icon' => 'bi-heart-pulse', 'title' => 'Wellness', 'desc' => 'Discover wellness products for a healthier lifestyle.'],
+                    ['icon' => 'bi-clipboard2-pulse', 'title' => 'Diagnostic', 'desc' => 'Access diagnostic tools and health check services.'],
+                    ['icon' => 'bi-journal-medical', 'title' => 'Health Corner', 'desc' => 'Read tips and advice for your daily health journey.'],
+                    ];
+                    foreach ($services as $s): ?>
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="service-card">
+                        <div class="service-icon-wrap">
+                            <i class="bi <?= $s['icon'] ?>"></i>
+                        </div>
+                        <div class="service-body">
+                            <h5 class="service-name"><?= $s['title'] ?></h5>
+                            <p class="service-desc"><?= $s['desc'] ?></p>
+                        </div>
+                        <a href="#" class="service-link">
+                            Explore
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                        </a>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+                </div>
+            </div>
+        </section>
+
+         <!-- Footer Section -->
+    <footer class="footer">
+      <div class="container">
+        <div class="row g-4">
+          <!-- About Section -->
+          <div class="col-lg-4 col-md-6">
+            <h5 class="footer-title">Pharmacare Hub</h5>
+            <p class="footer-text">
+              Your trusted partner for healthcare solutions. We provide quality
+              medicines, wellness products, and healthcare services to keep you
+              healthy.
+            </p>
+            <div class="social-links">
+              <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a>
+              <a href="#" class="social-icon"><i class="bi bi-twitter"></i></a>
+              <a href="#" class="social-icon"
+                ><i class="bi bi-instagram"></i
+              ></a>
+              <a href="#" class="social-icon"><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+
+          <!-- Quick Links -->
+          <div class="col-lg-2 col-md-6">
+            <h5 class="footer-title">Quick Links</h5>
+            <ul class="footer-links">
+              <li><a href="#">Home</a></li>
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Services</a></li>
+              <li><a href="#">Shop</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </div>
+
+          <!-- Services -->
+          <div class="col-lg-2 col-md-6">
+            <h5 class="footer-title">Services</h5>
+            <ul class="footer-links">
+              <li><a href="#">Prescription</a></li>
+              <li><a href="#">Consultation</a></li>
+              <li><a href="#">Diagnostics</a></li>
+              <li><a href="#">Wellness</a></li>
+              <li><a href="#">Home Delivery</a></li>
+            </ul>
+          </div>
+
+          <!-- Contact Info -->
+          <div class="col-lg-4 col-md-6">
+            <h5 class="footer-title">Contact Us</h5>
+            <ul class="footer-contact">
+              <li>
+                <i class="bi bi-geo-alt-fill"></i>
+                <span>123 Healthcare Street, Panabo City, Mindanao</span>
+              </li>
+              <li>
+                <i class="bi bi-telephone-fill"></i>
+                <span>+63 123 456 7890</span>
+              </li>
+              <li>
+                <i class="bi bi-envelope-fill"></i>
+                <span>info@pharmacarehub.com</span>
+              </li>
+              <li>
+                <i class="bi bi-clock-fill"></i>
+                <span>Mon - Sat: 8:00 AM - 8:00 PM</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+          <div class="row align-items-center">
+            <div class="col-md-6 text-center text-md-start">
+              <p class="mb-0">
+                &copy; 2025 Pharmacare Hub. All rights reserved.
+              </p>
+            </div>
+            <div class="col-md-6 text-center text-md-end">
+              <a href="#" class="footer-bottom-link">Privacy Policy</a>
+              <span class="mx-2">|</span>
+              <a href="#" class="footer-bottom-link">Terms of Service</a>
+              <span class="mx-2">|</span>
+              <a href="#" class="footer-bottom-link">Cookie Policy</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
     </body>
 </html>
