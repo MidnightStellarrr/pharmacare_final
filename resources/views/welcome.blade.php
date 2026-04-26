@@ -660,14 +660,12 @@
         <li><a href="/services" class="active">Services</a></li>
         <li><a href="/shop" class="ph-btn-shop">Shop</a></li>
         <!-- Auth links (Laravel Blade) -->
-        {{-- @auth
+        @auth
         <li><a href="{{ url('/dashboard') }}" class="ph-btn-outline">Dashboard</a></li>
         @else
         <li><a href="{{ route('login') }}">Log in</a></li>
         <li><a href="{{ route('register') }}" class="ph-btn-outline">Register</a></li>
-        @endauth --}}
-        <li><a href="/login">Log in</a></li>
-        <li><a href="/register" class="ph-btn-outline">Register</a></li>
+        @endauth 
         </ul>
     </header>
 
@@ -886,30 +884,19 @@
             <div class="col-lg-2 col-md-3 col-6">
             <p class="ph-footer-title">Quick Links</p>
             <ul class="ph-footer-links">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Services</a></li>
-                <li><a href="#">Shop</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about_us">About Us</a></li>
+                <li><a href="/services">Services</a></li>
+                <li><a href="/shop">Shop</a></li>
             </ul>
             </div>
             <div class="col-lg-2 col-md-3 col-6">
             <p class="ph-footer-title">Services</p>
             <ul class="ph-footer-links">
-                <li><a href="#">Prescription</a></li>
-                <li><a href="#">Consultation</a></li>
-                <li><a href="#">Diagnostics</a></li>
-                <li><a href="#">Wellness</a></li>
-                <li><a href="#">Home Delivery</a></li>
-            </ul>
-            </div>
-            <div class="col-lg-4 col-md-6">
-            <p class="ph-footer-title">Contact Us</p>
-            <ul class="ph-footer-contact">
-                <li><i class="bi bi-geo-alt-fill"></i><span>123 Healthcare Street, Panabo City, Mindanao</span></li>
-                <li><i class="bi bi-telephone-fill"></i><span>+63 123 456 7890</span></li>
-                <li><i class="bi bi-envelope-fill"></i><span>info@pharmacarehub.com</span></li>
-                <li><i class="bi bi-clock-fill"></i><span>Mon – Sat: 8:00 AM – 8:00 PM</span></li>
+                <li><a href="/prescription">Prescription</a></li>
+                <li><a href="/consultation">Consultation</a></li>
+                <li><a href="/diagnostics">Diagnostics</a></li>
+                <li><a href="/wellness">Wellness</a></li>
             </ul>
             </div>
         </div>
