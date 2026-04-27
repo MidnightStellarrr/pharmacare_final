@@ -165,20 +165,6 @@
         max-width: 720px;
         }
 
-        .ph-hero-tag {
-        display: inline-block;
-        font-size: 12px;
-        font-weight: 600;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        background: rgba(61,189,170,0.25);
-        border: 1px solid rgba(61,189,170,0.5);
-        color: #7eedd9;
-        padding: 5px 14px;
-        border-radius: 99px;
-        margin-bottom: 1.25rem;
-        }
-
         .ph-hero-content h1 {
         font-family: 'Lora', serif;
         font-size: clamp(32px, 5vw, 52px);
@@ -681,7 +667,6 @@
         </div>
 
         <div class="ph-hero-content">
-        <span class="ph-hero-tag">Trusted Healthcare Platform</span>
         <h1>Healthy Medicine,<br>Right Where You Need It</h1>
         <p>Find real-time stock at pharmacies near you, manage prescriptions,<br>and never miss a dose again.</p>
         <div class="ph-hero-btns">
