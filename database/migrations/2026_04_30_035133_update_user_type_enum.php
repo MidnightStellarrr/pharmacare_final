@@ -1,0 +1,28 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
+
+return new class extends Migration
+{
+    public function up(): void
+    {
+        // Drop the existing column and recreate it with correct enum values
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('user_type');
+        });
+        
+        Schema::table('users', function (Blueprint $table) {
+            $table->enum('user_type', ['customer', 'pharmacist', 'admin'])->default('customer')->after('email');
+        });
+    }
+
+    public function down(): void
+    {
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('user_type');
+        });
+    }
+};

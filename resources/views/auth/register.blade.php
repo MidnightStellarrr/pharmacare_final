@@ -40,8 +40,8 @@
         </div>
 
         <div>
-            <label for="role" class="block mt-4 text-sm font-medium text-gray-700">{{ __('Register as') }}</label>
-            <select id="role" name="role" class="block mt-1 w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+            <label for="user_type" class="block mt-4 text-sm font-medium text-gray-700">{{ __('Register as') }}</label>
+            <select id="user_type" name="user_type" class="block mt-1 w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
                 <option value="customer">{{ __('Customer') }}</option>
                 <option value="pharmacist">{{ __('Pharmacist') }}</option>
             </select>
