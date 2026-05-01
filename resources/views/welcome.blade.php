@@ -165,6 +165,20 @@
         max-width: 720px;
         }
 
+        .ph-hero-tag {
+        display: inline-block;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        background: rgba(61,189,170,0.25);
+        border: 1px solid rgba(61,189,170,0.5);
+        color: #7eedd9;
+        padding: 5px 14px;
+        border-radius: 99px;
+        margin-bottom: 1.25rem;
+        }
+
         .ph-hero-content h1 {
         font-family: 'Lora', serif;
         font-size: clamp(32px, 5vw, 52px);
@@ -667,6 +681,7 @@
         </div>
 
         <div class="ph-hero-content">
+        <span class="ph-hero-tag">Trusted Healthcare Platform</span>
         <h1>Healthy Medicine,<br>Right Where You Need It</h1>
         <p>Find real-time stock at pharmacies near you, manage prescriptions,<br>and never miss a dose again.</p>
         <div class="ph-hero-btns">
@@ -678,31 +693,6 @@
         <div class="ph-hero-dots">
         <button class="ph-dot active" onclick="goSlide(0)"></button>
         <button class="ph-dot" onclick="goSlide(1)"></button>
-        </div>
-    </section>
-
-    <!-- ── SEARCH ── -->
-    <section class="ph-search">
-        <div class="container">
-        <div class="row">
-            <div class="col-lg-10 mx-auto">
-            <form action="search_results.php" method="GET">
-                <div class="ph-search-bar">
-                <select name="category">
-                    <option value="">All Categories</option>
-                    <option value="Medicine">Medicine</option>
-                    <option value="Wellness">Wellness</option>
-                    <option value="Diagnostics">Diagnostics</option>
-                    <option value="Supplements">Supplements</option>
-                </select>
-                <input type="text" name="query" placeholder="Search for medicine, device, or supplement...">
-                <button type="submit">
-                    <i class="bi bi-search"></i> Find Medicine
-                </button>
-                </div>
-            </form>
-            </div>
-        </div>
         </div>
     </section>
 
