@@ -784,7 +784,7 @@
                     <div class="ph-product-card">
                         <div class="ph-product-image">
                             @if($medicine->image)
-                                <img src="{{ asset('storage/' . $medicine->image) }}" alt="{{ $medicine->name }}">
+                                <img src="{{ $medicine->image_url }}" alt="{{ $medicine->name }}">
                             @else
                                 <div class="ph-product-image-placeholder">
                                     <i class="bi bi-capsule"></i>

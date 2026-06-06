@@ -26,34 +26,44 @@ class MedicineController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'brand' => 'nullable|string|max:255',
-            'stock' => 'required|integer|min:0',
-            'price' => 'required|numeric|min:0',
+            'stock' => 'required|integer|min:0|max:10000',
+            'price' => 'required|numeric|min:0.01|max:99999.99',
             'expiry_date' => 'required|date|after:today',
             'category' => 'nullable|string|max:255',
-            'description' => 'nullable|string',
+            'description' => 'nullable|string|max:1000',
             'supplier' => 'nullable|string|max:255',
-            'reorder_level' => 'required|integer|min:0',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048' // Add image validation
+            'reorder_level' => 'required|integer|min:0|max:1000',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
 
-        // Handle image upload
-        if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('medicines', 'public');
-            $validated['image'] = $imagePath;
+        try {
+            // Handle image upload
+            if ($request->hasFile('image')) {
+                $imagePath = $request->file('image')->store('medicines', 'public');
+                $validated['image'] = $imagePath;
+            }
+
+            $medicine = Medicine::create($validated);
+
+            if ($request->ajax() || $request->expectsJson()) {
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Medicine added successfully!',
+                    'medicine' => $medicine
+                ]);
+            }
+
+            return redirect()->route('pharmacist.medicines.index')
+                ->with('success', 'Medicine added successfully!');
+        } catch (\Throwable $e) {
+            if ($request->ajax() || $request->expectsJson()) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Error: ' . $e->getMessage()
+                ], 422);
+            }
+            throw $e;
         }
-
-        $medicine = Medicine::create($validated);
-
-        if ($request->ajax()) {
-            return response()->json([
-                'success' => true,
-                'message' => 'Medicine added successfully!',
-                'medicine' => $medicine
-            ]);
-        }
-
-        return redirect()->route('pharmacist.medicines.index')
-            ->with('success', 'Medicine added successfully!');
     }
 
     public function edit(Medicine $medicine)

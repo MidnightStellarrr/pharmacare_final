@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Pharmacist\MedicineController;
 use App\Http\Controllers\ShopController;
+use App\Http\Controllers\ReportController;
 use Illuminate\Support\Facades\Auth; // ADD THIS LINE
 
 
@@ -21,10 +22,6 @@ Route::get('/contact', function () {
 
 Route::get('/cart', function () {
     return view('cart');
-}); 
-
-Route::get('/shop', function () {
-    return view('shop');
 }); 
 
 // Customer Dashboard
@@ -65,5 +62,12 @@ Route::get('/check-login', function() {
 })->name('check.login');
 
 Route::get('/api/cart-data', [ShopController::class, 'getCartData'])->middleware(['auth'])->name('api.cart.data');
+
+// Report and database feature routes
+Route::middleware(['auth'])->group(function () {
+    Route::get('/reports/database', [ReportController::class, 'database'])->name('reports.database');
+    Route::get('/reports/procedures', [ReportController::class, 'testProcedures'])->name('reports.procedures');
+    Route::get('/reports/performance', [ReportController::class, 'performance'])->name('reports.performance');
+});
 
 require __DIR__.'/auth.php';

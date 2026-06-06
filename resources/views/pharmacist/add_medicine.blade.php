@@ -33,21 +33,23 @@
                             <div>
                                 <label class="block text-sm font-medium text-gray-700">Medicine Name *</label>
                                 <input type="text" name="name" required 
-                                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                                    class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 px-3 py-2">
+                                @error('name')<p class="text-red-500 text-sm mt-1">{{ $message }}</p>@enderror
                             </div>
 
                             <!-- Brand -->
                             <div>
                                 <label class="block text-sm font-medium text-gray-700">Brand</label>
                                 <input type="text" name="brand" 
-                                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                                    class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 px-3 py-2">
+                                @error('brand')<p class="text-red-500 text-sm mt-1">{{ $message }}</p>@enderror
                             </div>
 
                             <!-- Category -->
                             <div>
                                 <label class="block text-sm font-medium text-gray-700">Category</label>
                                 <select name="category" 
-                                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                                    class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 px-3 py-2">
                                     <option value="">Select Category</option>
                                     <option value="Pain Relief">Pain Relief</option>
                                     <option value="Antibiotics">Antibiotics</option>
@@ -56,48 +58,56 @@
                                     <option value="Allergy">Allergy</option>
                                     <option value="Gastrointestinal">Gastrointestinal</option>
                                 </select>
+                                @error('category')<p class="text-red-500 text-sm mt-1">{{ $message }}</p>@enderror
                             </div>
 
                             <!-- Supplier -->
                             <div>
                                 <label class="block text-sm font-medium text-gray-700">Supplier</label>
                                 <input type="text" name="supplier" 
-                                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                                    class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 px-3 py-2">
+                                @error('supplier')<p class="text-red-500 text-sm mt-1">{{ $message }}</p>@enderror
                             </div>
 
                             <!-- Stock Quantity -->
                             <div>
                                 <label class="block text-sm font-medium text-gray-700">Stock Quantity *</label>
                                 <input type="number" name="stock" required min="0" 
-                                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                                    class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 px-3 py-2">
+                                @error('stock')<p class="text-red-500 text-sm mt-1">{{ $message }}</p>@enderror
                             </div>
 
                             <!-- Price -->
                             <div>
                                 <label class="block text-sm font-medium text-gray-700">Price (₱) *</label>
                                 <input type="number" name="price" required min="0" step="0.01" 
-                                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                                    class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 px-3 py-2">
+                                @error('price')<p class="text-red-500 text-sm mt-1">{{ $message }}</p>@enderror
                             </div>
 
                             <!-- Expiry Date -->
                             <div>
                                 <label class="block text-sm font-medium text-gray-700">Expiry Date *</label>
                                 <input type="date" name="expiry_date" required 
-                                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                                    class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 px-3 py-2">
+                                @error('expiry_date')<p class="text-red-500 text-sm mt-1">{{ $message }}</p>@enderror
                             </div>
 
                             <!-- Reorder Level -->
                             <div>
                                 <label class="block text-sm font-medium text-gray-700">Reorder Level *</label>
                                 <input type="number" name="reorder_level" required min="0" value="10"
-                                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                                    class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 px-3 py-2">
+                                @error('reorder_level')<p class="text-red-500 text-sm mt-1">{{ $message }}</p>@enderror
                             </div>
 
                             <!-- Description -->
                             <div class="md:col-span-2">
                                 <label class="block text-sm font-medium text-gray-700">Description</label>
                                 <textarea name="description" rows="3" 
-                                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"></textarea>
+                                    class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 px-3 py-2"></textarea>
+                                @error('description')<p class="text-red-500 text-sm mt-1">{{ $message }}</p>@enderror
+                            </div>
                             </div>
                         </div>
 
@@ -138,6 +148,10 @@
             e.preventDefault();
             
             const formData = new FormData(this);
+            const submitBtn = document.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Adding...';
             
             fetch('{{ route("pharmacist.medicines.store") }}', {
                 method: 'POST',
@@ -147,16 +161,37 @@
                     'X-Requested-With': 'XMLHttpRequest'
                 }
             })
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) {
+                    return response.json().then(data => {
+                        throw { status: response.status, data: data };
+                    });
+                }
+                return response.json();
+            })
             .then(data => {
                 if(data.success) {
-                    alert(data.message);
-                    window.location.href = '{{ route("pharmacist.dashboard") }}';
+                    alert('✓ ' + data.message);
+                    window.location.href = '{{ route("pharmacist.medicines.index") }}';
                 }
             })
             .catch(error => {
-                console.error('Error:', error);
-                this.submit();
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalText;
+                
+                if (error.status === 422 && error.data.errors) {
+                    // Validation errors
+                    let errorMsg = 'Validation errors:\n\n';
+                    for (const [field, messages] of Object.entries(error.data.errors)) {
+                        errorMsg += field + ': ' + messages.join(', ') + '\n';
+                    }
+                    alert(errorMsg);
+                } else if (error.status === 422) {
+                    alert('Validation Error: Please check your input and try again.');
+                } else {
+                    alert('Error: ' + (error.data?.message || 'An error occurred while adding the medicine.'));
+                    console.error('Error:', error);
+                }
             });
         });
     </script>

@@ -48,6 +48,11 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect(route('dashboard', absolute: false));
+        // Redirect based on user_type
+        if ($user->user_type === 'pharmacist') {
+            return redirect()->intended(route('pharmacist.dashboard'));
+        }
+
+        return redirect()->intended(route('dashboard'));
     }
 }
